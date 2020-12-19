@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="main">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="ion-padding" (submit)="postProfile()">
+    <div class="top">プロフィールを登録してください</div>
+    <ion-item lines="full" class="ion-padding-bottom">
+      <ion-label position="floating">年齢</ion-label>
+      <ion-input required type="number" [(ngModel)]="age" name="age"></ion-input>
+      <ion-label>性別</ion-label>
+      <ion-select required [(ngModel)]="gender" name="gender" placeholder="1つ選んでください">
+        <ion-select-option value="0">その他</ion-select-option>
+        <ion-select-option value="1">男</ion-select-option>
+        <ion-select-option value="2">女</ion-select-option>
+      </ion-select>
+      <ion-label position="floating">学校名</ion-label>
+      <ion-input required type="text" [(ngModel)]="school" name="school"></ion-input>
+      <ion-label position="floating">自己紹介文</ion-label>
+      <ion-textarea required [(ngModel)]="profile" name="profile"></ion-textarea>
+    </ion-item>
+
+    <div class="top">マッチングアピール画像1✨</div>
+    <div class="ion-padding">
+      <input type="file" accept="image/*" id="image_1" (change)="loadPicture($event)"/>
+    </div>
+    <div class="top">マッチングアピール画像2✨</div>
+    <div class="ion-padding">
+      <input type="file" accept="image/*" id="image_2" (change)="loadPicture($event)"/>
+    </div>
+    <div class="top">マッチングアピール画像3✨</div>
+    <div class="ion-padding">
+      <input type="file" accept="image/*" id="image_3" (change)="loadPicture($event)"/>
+    </div>
+    <div class="top">インスタQRコード</div>
+    <div class="ion-padding">
+      <input type="file" accept="image/*" id="image_sns" (change)="loadPicture($event)"/>
+    </div>
+    <ion-button type="submit" expand="block" [fill]="register_outline" color="main" [disabled]="register_disabled">{{register_button}}</ion-button>
+  </form>
+</ion-content>

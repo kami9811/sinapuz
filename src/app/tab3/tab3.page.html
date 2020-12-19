@@ -1,45 +1,11 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title><ion-img id="icon" src="../../assets/icon/icon.png"></ion-img></ion-title>
+  <ion-toolbar color="main">
+    <ion-title><ion-img id="icon" src="../../assets/icon/icon_trans.png"></ion-img></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div id="top" class="ion-padding">各種設定</div>
 
-  <form class="ion-padding-bottom" (submit)="setDistance()">
-    <ion-item lines="full">
-      <ion-label position="stacked">NABOR DIARYで表示する距離[km]</ion-label>
-      <ion-input required type="number" [(ngModel)]="distance" name="distance" placeholder="入力後「保存ボタン」で反映"></ion-input>
-    </ion-item>
-    <ion-button type="submit" expand="block" color="base-green">保存</ion-button>
-  </form>
-
-  <!--
-  <div *ngIf="parentFlag">
-    <ion-card *ngFor="let c of childList" button="true" routerLink="/self/3/{{c}}">
-      <ion-card-content>{{c}}さん</ion-card-content>
-    </ion-card>
-  </div>
-  <div *ngIf="!parentFlag">
-    <ion-card *ngFor="let p of parentList" button="true" routerLink="/self/3/{{p}}">
-      <ion-card-content>{{p}}さん</ion-card-content>
-    </ion-card>
-  </div>
-  -->
-
-  <ion-button expand="block" color="strong" (click)="logout()">ログアウト</ion-button>
-  <!--
-  <div id=top-button-area>
-    <button id="top-button" (click)="logout()">ログアウト</button>
-  </div>
-  -->
-
-  <!--
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="success" (click)="navigateToFamily()">
-      <ion-icon name="person-add-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  -->
+  <ion-button expand="block" color="main" fill="outline" (click)="logout()">ログアウト</ion-button>
 </ion-content>

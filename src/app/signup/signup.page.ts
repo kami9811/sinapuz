@@ -9,11 +9,11 @@ import { GlobalService } from '../global.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-  id: string;
+  id: string = '';
   email: string;
   attribute: Number;
   prefecture: string;
-  password: string;
+  password: string = '';
 
   postObj: any = {};
   returnObj: any = {};
@@ -45,15 +45,41 @@ export class SignupPage implements OnInit {
 
     await alert.present();
   }
+  async alertId() {
+    const alert = await this.alertController.create({
+      header: '新規登録',
+      message: '新規登録に失敗しました.<br>IDが入力されていません.',
+      buttons: ['OK']
+    })
+
+    await alert.present();
+  }
+  async alertPassword() {
+    const alert = await this.alertController.create({
+      header: '新規登録',
+      message: '新規登録に失敗しました.<br>パスワードが入力されていません.',
+      buttons: ['OK']
+    })
+
+    await alert.present();
+  }
 
   signup = () => {
+    if(this.id == ''){
+      this.alertId();
+      return;
+    }
+    if(this.password == ''){
+      this.alertPassword();
+      return;
+    }
     this.postObj['id'] = this.id;
     this.postObj['email'] = this.email;
     this.postObj['prefecture'] = this.prefecture;
     this.postObj['password'] = this.password;
     const body = this.postObj;
 
-    this.gs.http('https://kn46itblog.com/hackathon/winter2020/php_apis/signup.php', body).subscribe(
+    this.gs.http('https://kn46itblog.com/biz/oncon10/php_apis/user/new/signup', body).subscribe(
       res => {
         this.returnObj = res;
         if(this.returnObj['status'] == 200){

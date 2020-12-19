@@ -1,11 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title><ion-img id="icon" src="../../assets/icon/icon.png"></ion-img></ion-title>
+  <ion-toolbar color="main">
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-img class="ion-padding" src="../../assets/logo.png"></ion-img>
+  <ion-img class="ion-padding logo" src="../../assets/icon/icon.jpeg"></ion-img>
   <div id="top">ログイン</div>
   <form class="ion-padding" (submit)="navigate()">
     <ion-item lines="full" class="ion-padding-bottom">
@@ -19,12 +18,12 @@
       <button type="submit" id="login-button" class="button">ログイン</button>
     </div>
     -->
-    <ion-button type="submit" expand="block" color="base-green" class="">ログイン</ion-button>
+    <ion-button type="submit" expand="block" color="main" class="">ログイン</ion-button>
   </form>
   <!--
   <div class="button-area">
     <button (click)="navigateToSignup()" class="button">新規登録</button>
   </div>
   -->
-  <ion-button id="bottom-button" expand="block" fill="outline" color="base-green" (click)="navigateToSignup()">新規登録はこちら</ion-button>
+  <ion-button id="bottom-button" expand="block" fill="outline" color="main" (click)="navigateToSignup()">新規登録はこちら</ion-button>
 </ion-content>

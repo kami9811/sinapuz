@@ -1,32 +1,35 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title><ion-img id="icon" src="../../assets/icon/icon.png"></ion-img></ion-title>
+  <ion-toolbar color="main">
+    <ion-title><ion-img id="icon" src="../../assets/icon/icon_trans.png"></ion-img></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- 座標テスト
-  <div>{{latitude}}: {{longitude}}</div>
-  -->
+  <div class="ion-padding">
+    <ion-img [src]="image_1"></ion-img>
+  </div>
+  <div class="ion-padding">
+    <ion-img [src]="image_2"></ion-img>
+  </div>
+  <div class="ion-padding">
+    <ion-img [src]="image_3"></ion-img>
+  </div>
 
-  <ng-container *ngFor="let a of articleList">
-    <ion-card button="true" color="{{a.category_color}}-{{a.category_level}}">
-      <ion-card-header routerLink="/article/1/{{a.article_id}}/{{a.title}}/{{a.text}}/{{a.id}}">
-        <ion-card-subtitle>[{{a.distance.toFixed(1)}}km] {{a.id}}さんの投稿<br>{{a.date}}</ion-card-subtitle>
-        <ion-card-title>{{a.title}}</ion-card-title>
-      </ion-card-header>
-    </ion-card>
-  </ng-container>
-
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button color="base-green" (click)="navigateToSelf()">
-      <ion-icon name="newspaper-outline"></ion-icon>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="information_flag">
+    <ion-fab-button color="positive" (click)="newGood()">
+      <ion-icon name="heart"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="base-green" (click)="navigateToEdit()">
-      <ion-icon name="add-outline"></ion-icon>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" *ngIf="information_flag">
+    <ion-fab-button color="negative" (click)="deleteGood()">
+      <ion-icon name="trash-bin-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" *ngIf="!information_flag">
+    <ion-fab-button color="main" (click)="getUser()">
+      <ion-icon name="reload-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 

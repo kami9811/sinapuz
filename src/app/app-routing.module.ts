@@ -39,6 +39,18 @@ const routes: Routes = [
   {
     path: 'edit/:tab',
     loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule)
+  },
+  {
+    path: 'new-profile',
+    loadChildren: () => import('./new-profile/new-profile.module').then( m => m.NewProfilePageModule)
+  },
+  {
+    path: 'profile/:matched_id',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'image-modal',
+    loadChildren: () => import('./image-modal/image-modal.module').then( m => m.ImageModalPageModule)
   }
 ];
 @NgModule({

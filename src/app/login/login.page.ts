@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../global.service';
 
@@ -7,7 +7,7 @@ import { GlobalService } from '../global.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit, OnDestroy {
+export class LoginPage implements OnInit {
   id: string = '';
   password: string = '';
 
@@ -28,11 +28,6 @@ export class LoginPage implements OnInit, OnDestroy {
     this.postObj['password'] = localStorage.password;
 
     this.login();
-  }
-  ngOnDestroy() {
-    if(this.status != 200){
-      this.router.navigate(['/login']);
-    }
   }
 
   navigate = () => {
@@ -73,7 +68,7 @@ export class LoginPage implements OnInit, OnDestroy {
   login = () => {
     const body = this.postObj;
 
-    this.gs.http('https://kn46itblog.com/hackathon/winter2020/php_apis/login.php', body).subscribe(
+    this.gs.http('https://kn46itblog.com/biz/oncon10/php_apis/user/edit/login', body).subscribe(
       res => {
         console.log(res);
         this.returnObj = res;
@@ -81,14 +76,16 @@ export class LoginPage implements OnInit, OnDestroy {
         // console.log(this.returnObj["status"]);
         if(this.status == 200){
           localStorage.id = this.postObj["id"];
-          localStorage.attribute = this.returnObj["attribute"];
-          localStorage.prefecture = this.returnObj["prefecture"];
-          localStorage.distance = this.returnObj["distance"];
-          localStorage.attribute = this.returnObj["attribute"];
           localStorage.password = this.postObj["password"];
           localStorage.hash = this.returnObj["hash"];
           console.log('Stored item!');
-          this.router.navigate(['/tabs', 'tab1', 'login']);
+          // this.returnObj["register_flag"]で分岐
+          if(this.returnObj["register_flag"] == 1){
+            this.router.navigate(['/tabs', 'tab1', 'login']);
+          }
+          else if(this.returnObj["register_flag"] == 0){
+            this.router.navigate(['/new-profile']);
+          }
         }
       },
       error => {
